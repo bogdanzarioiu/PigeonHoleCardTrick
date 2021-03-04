@@ -5,6 +5,10 @@
 //  Created by Bogdan on 3/4/21.
 //
 
+
+
+// I think I will use emojis + letters/numbers to represent the playing cards.
+//TODO: A picker view for the playing cards
 import SwiftUI
 
 struct ContentView: View {

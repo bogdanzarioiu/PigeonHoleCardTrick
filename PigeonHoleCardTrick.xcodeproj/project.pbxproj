@@ -11,6 +11,7 @@
 		B566FE7825F18FF000EB9724 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FE7725F18FF000EB9724 /* ContentView.swift */; };
 		B566FE7A25F18FF100EB9724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B566FE7925F18FF100EB9724 /* Assets.xcassets */; };
 		B566FE7D25F18FF100EB9724 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B566FE7C25F18FF100EB9724 /* Preview Assets.xcassets */; };
+		B566FE8625F1990E00EB9724 /* PlayingCardPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FE8525F1990E00EB9724 /* PlayingCardPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		B566FE7925F18FF100EB9724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B566FE7C25F18FF100EB9724 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B566FE7E25F18FF100EB9724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B566FE8525F1990E00EB9724 /* PlayingCardPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				B566FE7525F18FF000EB9724 /* PigeonHoleCardTrickApp.swift */,
 				B566FE7725F18FF000EB9724 /* ContentView.swift */,
+				B566FE8525F1990E00EB9724 /* PlayingCardPickerView.swift */,
 				B566FE7925F18FF100EB9724 /* Assets.xcassets */,
 				B566FE7E25F18FF100EB9724 /* Info.plist */,
 				B566FE7B25F18FF100EB9724 /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B566FE7825F18FF000EB9724 /* ContentView.swift in Sources */,
+				B566FE8625F1990E00EB9724 /* PlayingCardPickerView.swift in Sources */,
 				B566FE7625F18FF000EB9724 /* PigeonHoleCardTrickApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
