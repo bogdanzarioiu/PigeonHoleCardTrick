@@ -11,16 +11,35 @@
 //TODO: A picker view for the playing cards
 import SwiftUI
 
+
+
 struct ContentView: View {
+    @State private var isSheetOn = false
+    @State var selectedValue: String = ""
+    @State var selectedSuit: String = ""
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
-            Text("Do you want to see a cool thing???\nOk, grab a deck of cards.\nAsk your spectator to shuffle them and to give you back any 5 playing cards.\nPlace a card face down(this is the prediction we will use later) and the rest of them face up.\nNow tell me the cards you placed down by selecting them in the below spots.")
+            Text("Do you want to see a cool thing???\nOk, grab a deck of cards.\nAsk your spectator to shuffle them and to give you back any 5 playing cards.\nPlace a card face down(this is the prediction we will use later) and the rest of them face up.\nNow tell me the cards you placed down by dragging them in the below spots.")
                 .padding()
-                .font(.system(size: 16, weight: .black))
+                .font(.system(size: 10, weight: .black))
+            ScrollView(.horizontal){
+                HStack {
+                    ForEach(1..<10) { _ in
+                        PlayingCardView()
+                    
+                }
+                    
+                    }
+                }
+            
+            .frame(width: UIScreen.main.bounds.width, height: 120)
+            
             HStack {
                 Text("This will be the secret card")
                     .padding()
                     .frame(width: 94, height: 132)
+                    .font(.footnote)
                     .overlay(
                         RoundedRectangle(cornerRadius: 15, style: .continuous)
                             .stroke(Color.blue, style: StrokeStyle())
@@ -29,52 +48,84 @@ struct ContentView: View {
                 Spacer()
                     .frame(maxWidth: 30, maxHeight: 50)
                 
-                Text("Tap to add a card")
-                    .padding()
-                    .frame(width: 94, height: 132)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15, style: .continuous)
-                            .stroke(Color.blue, style: StrokeStyle())
-                            
-                    )
+                Button(action: {
+                    self.isSheetOn.toggle()
+                }, label: {
+                    Text("Drag here")
+                        .padding()
+                        .frame(width: 94, height: 132)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .stroke(Color.blue, style: StrokeStyle())
+                                
+                        )
+                })
+                
             
             }
             .padding()
+             
             
             HStack {
-                Text("Tap to add a card")
-                    .padding()
-                    .frame(width: 94, height: 132)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15, style: .continuous)
-                            .stroke(Color.blue, style: StrokeStyle())
-                            
-                    )
+                Button(action: {
+                    self.isSheetOn.toggle()
+                }, label: {
+                    Text("Drag here")
+                        .padding()
+                        .frame(width: 94, height: 132)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .stroke(Color.blue, style: StrokeStyle())
+                                
+                        )
+                })
+                
                 Spacer()
                     .frame(maxWidth: 30, maxHeight: 50)
-                Text("Tap to add a card")
-                    .padding()
-                    .frame(width: 94, height: 132)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15, style: .continuous)
-                            .stroke(Color.blue, style: StrokeStyle())
-                            
-                    )
+                Button(action: {
+                    self.isSheetOn.toggle()
+//                    self.selectedValue = ""
+//                    self.selectedSuit = 0
+                }, label: {
+                    Text("Drag here")
+                        .padding()
+                        .frame(width: 94, height: 132)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .stroke(Color.blue, style: StrokeStyle())
+                                
+                        )
+                        
+                    
+                })
+                
+                
                 Spacer()
                     .frame(maxWidth: 30, maxHeight: 50)
                 
-                Text("Tap to add a card")
-                    .padding()
-                    .frame(width: 94, height: 132)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15, style: .continuous)
-                            .stroke(Color.blue, style: StrokeStyle())
-                            
-                    )
+                Button(action: {
+                    self.isSheetOn.toggle()
+                }, label: {
+                    Text("Drag here")
+                        .padding()
+                        .frame(width: 94, height: 132)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                                .stroke(Color.blue, style: StrokeStyle())
+                                
+                        )
+                })
+                
             
             }
             .padding()
         }
+        .onAppear {
+            print(selectedSuit)
+        }
+        .sheet(isPresented: $isSheetOn, content: {
+            PlayingCardPickerView(selectedValue: $selectedValue, selectedSuit: $selectedSuit)
+        })
     }
 }
 

@@ -12,7 +12,7 @@ struct PlayingCardPickerView: View {
                    "8", "9", "10", "J", "Q","K"]
     @State private var didSelectValue = false
 
-    @State var suits = ["♣️", "❤️", "♠️", "♦️"]
+    var suits = ["♣️", "❤️", "♠️", "♦️"]
     @Binding var selectedValue: String
     @Binding var selectedSuit: String
     
@@ -27,9 +27,14 @@ struct PlayingCardPickerView: View {
             LazyVGrid(columns: layout, spacing: 20) {
                 ForEach(column1, id: \.self) { item in
                     Button(action: {
-                        
+                        self.selectedValue = item
+                        self.didSelectValue.toggle()
                     }, label: {
                         Text(item)
+                            .accentColor(.black)
+                            .font(.title)
+                            
+                            
                             
                     })
                     .disabled(didSelectValue)
@@ -39,16 +44,17 @@ struct PlayingCardPickerView: View {
                 }
 
             }.padding()
-            //Text("And now select the suit")
-            Picker("And now select the suit", selection: $selectedSuit) {
-                Text(suits[0])
-                Text(suits[1])
-                Text(suits[2])
-                Text(suits[3])
+            Picker("Press to select the suit", selection: $selectedSuit) {
+                ForEach(0 ..< suits.count) {
+                    Text(self.suits[$0]).tag($0)
+                }
             }
             .pickerStyle(MenuPickerStyle())
             .opacity(didSelectValue ? 1.0 : 0.2)
             
+        }.onDisappear {
+//            selectedValue = ""
+//            selectedSuit = 0
         }
     }
     
@@ -56,6 +62,6 @@ struct PlayingCardPickerView: View {
 
 struct PlayingCardPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayingCardPickerView(selectedValue: .constant(""), selectedSuit: .constant(""))
+        PlayingCardPickerView(selectedValue: .constant(""), selectedSuit: .constant("♣️"))
     }
 }
