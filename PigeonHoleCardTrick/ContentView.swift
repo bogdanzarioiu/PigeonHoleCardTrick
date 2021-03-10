@@ -14,19 +14,23 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @State private var cards = ["5D", "KS", "3D", "3C", "9S", "2D", "QS", "10D", "AC", "8C"]
+    
     @State private var isSheetOn = false
-    @State var selectedValue: String = ""
-    @State var selectedSuit: String = ""
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
             Text("Do you want to see a cool thing???\nOk, grab a deck of cards.\nAsk your spectator to shuffle them and to give you back any 5 playing cards.\nPlace a card face down(this is the prediction we will use later) and the rest of them face up.\nNow tell me the cards you placed down by dragging them in the below spots.")
                 .padding()
                 .font(.system(size: 10, weight: .black))
-            ScrollView(.horizontal){
+            ScrollView(.horizontal, showsIndicators: false){
                 HStack {
-                    ForEach(1..<10) { _ in
-                        PlayingCardView()
+                    ForEach(0..<self.cards.count) { card  in
+                        Text("\(cards[card])")
+                            .padding()
+                            .background(Color(.systemGray3))
+                            
+
                     
                 }
                     
@@ -120,11 +124,9 @@ struct ContentView: View {
             }
             .padding()
         }
-        .onAppear {
-            print(selectedSuit)
-        }
+       
         .sheet(isPresented: $isSheetOn, content: {
-            PlayingCardPickerView(selectedValue: $selectedValue, selectedSuit: $selectedSuit)
+            Text("Will be fixed later")
         })
     }
 }
