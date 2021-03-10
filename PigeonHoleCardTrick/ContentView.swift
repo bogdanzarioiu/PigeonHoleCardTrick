@@ -14,6 +14,8 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
+    @State private var dragAmount = CGSize.zero
     @State private var cards = ["5D", "KS", "3D", "3C", "9S", "2D", "QS", "10D", "AC", "8C"]
     
     @State private var isSheetOn = false
@@ -27,17 +29,32 @@ struct ContentView: View {
                 HStack {
                     ForEach(0..<self.cards.count) { card  in
                         Text("\(cards[card])")
+                            .frame(width: 80, height: 80)
                             .padding()
                             .background(Color(.systemGray3))
+                            
+                            .offset(dragAmount)
+                            .gesture(
+                                DragGesture(coordinateSpace: .global)
+                                    .onChanged{ value in
+                                        self.dragAmount = CGSize(width: value.translation.width, height: value.translation.height)
+                                    }
+                                    .onEnded{_ in
+                                        self.dragAmount = .zero
+                                    }
+                            )
+                           
                             
 
                     
                 }
                     
+                    
                     }
+                
                 }
             
-            .frame(width: UIScreen.main.bounds.width, height: 120)
+            .frame(width: UIScreen.main.bounds.width)
             
             HStack {
                 Text("This will be the secret card")
