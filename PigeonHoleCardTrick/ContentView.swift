@@ -15,46 +15,26 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var dragAmount = CGSize.zero
-    @State private var cards = ["5D", "KS", "3D", "3C", "9S", "2D", "QS", "10D", "AC", "8C"]
+    
+    @State var card1Value = ""
+    @State var card2Value = ""
+    @State var card3Value = ""
+    @State var card4Value = ""
+    @State var card5Value = ""
+    
+    @State var card1Suit = ""
+    @State var card2Suit = ""
+    @State var card3Suit = ""
+    @State var card4Suit = ""
+    @State var card5Suit = ""
     
     @State private var isSheetOn = false
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
-            Text("Do you want to see a cool thing???\nOk, grab a deck of cards.\nAsk your spectator to shuffle them and to give you back any 5 playing cards.\nPlace a card face down(this is the prediction we will use later) and the rest of them face up.\nNow tell me the cards you placed down by dragging them in the below spots.")
+            Text("Do you want to see a cool thing???\nOk, grab a deck of cards.\nAsk your spectator to shuffle them and to give you back any 5 playing cards.\nPlace a card face down(this is the prediction we will use later) and the rest of them face up.\nNow tell me the cards you placed down by selecting them in the below spots.")
                 .padding()
-                .font(.system(size: 10, weight: .black))
-            ScrollView(.horizontal, showsIndicators: false){
-                HStack {
-                    ForEach(0..<self.cards.count) { card  in
-                        Text("\(cards[card])")
-                            .frame(width: 80, height: 80)
-                            .padding()
-                            .background(Color(.systemGray3))
-                            
-                            .offset(dragAmount)
-                            .gesture(
-                                DragGesture(coordinateSpace: .global)
-                                    .onChanged{ value in
-                                        self.dragAmount = CGSize(width: value.translation.width, height: value.translation.height)
-                                    }
-                                    .onEnded{_ in
-                                        self.dragAmount = .zero
-                                    }
-                            )
-                           
-                            
-
-                    
-                }
-                    
-                    
-                    }
-                
-                }
-            
-            .frame(width: UIScreen.main.bounds.width)
+                .font(.system(size: 20, weight: .black))
             
             HStack {
                 Text("This will be the secret card")
@@ -72,7 +52,7 @@ struct ContentView: View {
                 Button(action: {
                     self.isSheetOn.toggle()
                 }, label: {
-                    Text("Drag here")
+                    Text("Card 2")
                         .padding()
                         .frame(width: 94, height: 132)
                         .overlay(
@@ -91,7 +71,7 @@ struct ContentView: View {
                 Button(action: {
                     self.isSheetOn.toggle()
                 }, label: {
-                    Text("Drag here")
+                    Text("Card 3")
                         .padding()
                         .frame(width: 94, height: 132)
                         .overlay(
@@ -108,7 +88,7 @@ struct ContentView: View {
 //                    self.selectedValue = ""
 //                    self.selectedSuit = 0
                 }, label: {
-                    Text("Drag here")
+                    Text("Card 4")
                         .padding()
                         .frame(width: 94, height: 132)
                         .overlay(
@@ -127,7 +107,7 @@ struct ContentView: View {
                 Button(action: {
                     self.isSheetOn.toggle()
                 }, label: {
-                    Text("Drag here")
+                    Text("Card 5")
                         .padding()
                         .frame(width: 94, height: 132)
                         .overlay(
